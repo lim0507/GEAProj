@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
     public int damage = 2;
     public float speed = 8f;
     public float lifeTime = 3f;
+
     private Vector3 moveDir;
 
     public void SetDirection(Vector3 dir)
@@ -24,9 +25,9 @@ public class EnemyBullet : MonoBehaviour
     {
         transform.position += moveDir * speed * Time.deltaTime;
     }
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("player"))
+        if(other.CompareTag("Player"))
         {
             PlayerController pc = other.GetComponent<PlayerController>();
             if (pc != null) pc.TakeDamage(damage);

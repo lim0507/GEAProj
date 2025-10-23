@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 2f;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +21,16 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
         if(other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            enemy enemy = other.GetComponent<enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+
+
             Destroy(gameObject);
         }
     }

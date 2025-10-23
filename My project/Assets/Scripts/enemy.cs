@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
-    public enum EnemyState { Idle, Trace, Attack}
+    public enum EnemyState { Idle, Trace, Attack, RunAway}
     public EnemyState state = EnemyState.Idle;
 
     public float moveSpeed = 2f;
     public float traceRange = 15f;
     public float attackRange = 6f;
+    public float runAwayDistance = 2f;
     public float attackCooldown = 1.5f;
 
     public GameObject bulletPrefab;
@@ -20,12 +22,15 @@ public class enemy : MonoBehaviour
     public int maxHP = 5;
     private int currentHP;
 
+
+    public Slider hpSlider;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lastAttackTime = -attackCooldown;
         currentHP = maxHP;
+        hpSlider.value = 1f;
     }
 
     // Update is called once per frame
@@ -34,6 +39,12 @@ public class enemy : MonoBehaviour
         if (player == null) return;
 
         float dist = Vector3.Distance(player.position, transform.position);
+        float hpPercent = (float)currentHP / maxHP;
+
+        if (hpPercent <= 0.2f && state != EnemyState.RunAway)
+        {
+            state = EnemyState.RunAway;
+        }
 
         switch (state)
         {
@@ -54,6 +65,11 @@ public class enemy : MonoBehaviour
                     state = EnemyState.Trace;
                 else
                     AttackPlayer();
+                break;
+            case EnemyState.RunAway:
+                RunAwayFromPlayer();
+                if (dist > runAwayDistance)
+                    state = EnemyState.Idle;
                 break;
         }
     }
@@ -85,9 +101,17 @@ public class enemy : MonoBehaviour
             }
         }
     }
+    void RunAwayFromPlayer()
+    {
+        Vector3 dir = (transform.position - player.position).normalized;
+        float runSpeed = moveSpeed * 1.5f;
+        transform.position += dir * runSpeed * Time.deltaTime;
+        transform.LookAt(transform.position + dir);
+    }
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+        hpSlider.value = (float)currentHP / maxHP;
 
         if (currentHP <= 0)
         {

@@ -33,8 +33,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            pov.m_HorizontalAxis.Value = transform.eulerAngles.y;
+            pov.m_VerticalAxis.Value = 0f;
+        }
+
         isGrounded = controller.isGrounded;
-        if(isGrounded && velocity.y < 0)
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 5f;
+            virtualCam.m_Lens.FieldOfView = 80f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 5f;
+            virtualCam.m_Lens.FieldOfView = 60f;
+        }
+
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -47,8 +66,8 @@ public class PlayerController : MonoBehaviour
         camForward.Normalize();
 
         Vector3 camRight = virtualCam.transform.right;
-        camForward.y = 0;
-        camForward.Normalize();
+        camRight.y = 0;
+        camRight.Normalize();
 
         Vector3 move = (camForward * z + camRight * x).normalized;
         controller.Move(move * speed * Time.deltaTime);

@@ -22,8 +22,10 @@ public class enemy : MonoBehaviour
     public int maxHP = 5;
     private int currentHP;
 
-
     public Slider hpSlider;
+    public delegate void EnemyDeathHandler();
+    public event EnemyDeathHandler OnEnemyDeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,8 +120,10 @@ public class enemy : MonoBehaviour
             Die();
         }
     }
-    void Die()
+    public void Die()
     {
+        OnEnemyDeath?.Invoke();
+
         Destroy(gameObject);
     }
 }

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     public bool isGrounded;
+    public bool hasKey = false;
 
     public int maxHP = 100;
     private int currentHP;

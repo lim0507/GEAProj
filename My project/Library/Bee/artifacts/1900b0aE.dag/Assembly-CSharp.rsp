@@ -356,9 +356,11 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.58f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/CinemachineSwitcher.cs"
+"Assets/Scripts/Door.cs"
 "Assets/Scripts/enemy.cs"
 "Assets/Scripts/EnemyBullet.cs"
 "Assets/Scripts/EnemySpawner.cs"
+"Assets/Scripts/KeyPickUp.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerShooting.cs"
 -langversion:9.0

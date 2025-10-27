@@ -361,6 +361,7 @@
 "Assets/Scripts/EnemyBullet.cs"
 "Assets/Scripts/EnemySpawner.cs"
 "Assets/Scripts/KeyPickUp.cs"
+"Assets/Scripts/Maid.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerShooting.cs"
 -langversion:9.0

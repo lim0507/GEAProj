@@ -30,6 +30,9 @@ public class Bullet : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
 
+            Maid se = other.GetComponent<Maid>();
+            if (se != null)
+                se.TakeDamage(damage);
 
             Destroy(gameObject);
         }

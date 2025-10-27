@@ -140,6 +140,7 @@ public class enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+
         if (hpSlider != null)
             hpSlider.value = (float)currentHP / maxHP;
 

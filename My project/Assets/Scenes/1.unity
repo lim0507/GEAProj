@@ -1540,7 +1540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &996491063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf20af62f840f48a14ec083c6fdde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7299756613050425408, guid: c63d0c08e3f1ba94ca6f3c7b0be3d220, type: 3}
+  enemyPrefab: {fileID: 1852836283758971199, guid: 7c7d9223ad098734197838f7014f057f, type: 3}
   bossPrefab: {fileID: 7299756613050425408, guid: c63d0c08e3f1ba94ca6f3c7b0be3d220, type: 3}
   keyPrefab: {fileID: 6466202042349846590, guid: 0c790c58a37a9bc43bd7290e84b7ec44, type: 3}
   keySpawnPoint: {fileID: 1228567484}

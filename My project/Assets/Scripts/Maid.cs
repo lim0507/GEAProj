@@ -51,9 +51,22 @@ public class Maid : MonoBehaviour
     {
         if (spawnEnemyPrefab != null)
         {
-            
-            Vector3 spawnPos = transform.position + new Vector3(Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius));
-            Instantiate(spawnEnemyPrefab, spawnPos, Quaternion.identity);
+            if (spawnEnemyPrefab != null)
+            {
+                Vector3 spawnPos = transform.position + new Vector3(
+                    Random.Range(-spawnRadius, spawnRadius),
+                    0.5f,
+                    Random.Range(-spawnRadius, spawnRadius)
+                );
+
+                GameObject enemy = Instantiate(spawnEnemyPrefab, spawnPos, Quaternion.identity);
+
+                Collider maidCollider = GetComponent<Collider>();
+                Collider enemyCollider = enemy.GetComponent<Collider>();
+
+                if (maidCollider != null && enemyCollider != null)
+                    Physics.IgnoreCollision(maidCollider, enemyCollider);
+            }
         }
         
     }

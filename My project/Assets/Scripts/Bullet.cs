@@ -32,7 +32,15 @@ public class Bullet : MonoBehaviour
 
             Maid se = other.GetComponent<Maid>();
             if (se != null)
+            {
                 se.TakeDamage(damage);
+            }
+
+            Knight knight = other.GetComponent<Knight>();
+            if (knight != null)
+            {
+                knight.TakeDamage(damage); 
+            }
 
             Destroy(gameObject);
         }

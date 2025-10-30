@@ -503,7 +503,7 @@ MonoBehaviour:
   attackRange: 6
   runAwayDistance: 2
   attackCooldown: 1.5
-  bulletPrefab: {fileID: 5226421766055941123, guid: 9140efa02e29f574e9e0eade297043e2, type: 3}
+  bulletPrefab: {fileID: 6581162985172559392, guid: e6e664cd1de888448b2742f6fa6ce65a, type: 3}
   firePoint: {fileID: 8252036653289521360}
   maxHP: 5
   hpSlider: {fileID: 36440926935904719}
